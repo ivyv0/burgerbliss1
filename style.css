@@ -1,0 +1,175 @@
+* {
+    font-family: 'Courier New', Courier, monospace;;
+}
+
+.logo img {
+   width: 15em;
+   color: #6b3f19;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+}
+
+p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2em;
+    text-align: center;
+    font-style: italic;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    font-size: 1em;
+    margin: 4em;
+}
+
+.burgerbackground {
+    display: flex;
+}
+
+.burgerbackground img {
+  width: 40%;
+  background-position: center; 
+  background-attachment: fixed; 
+  margin: 0;
+  padding: 2em;
+  text-align: center;
+  justify-content: center;
+} 
+
+.container {
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start; 
+    padding-top: 20em;
+}
+
+.button {
+    padding: 10px 20px;
+    margin-top: 2em;
+    background-color: #6b3f19;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #8b5a33;
+}
+
+
+.game {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 5em;
+    margin-right: 5em;
+}
+
+
+.hamburger img {
+    width: 10em;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    
+} 
+
+.topbun {
+    order: 1;
+}
+
+.addedIngredients {
+    display: flex;
+    flex-direction: column;
+    order: 2;
+}
+
+.bottombun {
+    order: 3;
+}
+
+.ingredients-list {
+   flex-direction: column;
+   cursor: pointer;
+   
+}
+
+.ingredients-list img:hover {
+    transform: scale(1.1);
+}
+
+
+.ingredients-options {
+    display: flex;
+    align-items: center; 
+}
+
+.ingredients-options img {
+    width: 8em;
+    margin: 0;
+    padding: 0;
+    margin: -12px 0; 
+}
+
+.ingredients-options2 img {
+    width: 8em;
+    padding-top: 2em;
+}
+
+.ingredients-options3 img {
+    width: 8em;
+    padding-top: 2em;
+}
+
+.receipt {
+    background-color: rgb(166, 166, 166);
+    padding: 2em;
+    width: 20em;
+    margin-top: 5em;
+    border-radius: 2em;
+}
+
+.checkout-button {
+    padding: 10px 20px;
+    background-color: #6b3f19;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.samenstellen {
+    padding: 4em;
+}
+
+
+.playagainbutton {
+    margin-left: 3em;
+}
+
+.terugbutton {
+    padding: 10px 15px 10px;
+    margin-top: 2em;
+    background-color: #6b3f19;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.terugbutton img {
+    width: 2em;
+}

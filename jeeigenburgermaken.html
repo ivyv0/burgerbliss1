@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BurgerBliss</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="logo">
+        <img src="img/logo-07.png" alt="Logo">
+    </div>
+    <h1>Je eigen hamburger maken</h1>
+    <h2>Klik op de ingrediënten die je wilt toevoegen</h2>
+    <a class="terugbutton" href="index.html"><img src="img/pijltje.png" alt="pijltje" class="pijltje"></a>
+<div class="samenstellen"> 
+    <div class="game">
+        <div class="hamburger">
+            <img src="img/topbun.png" alt="topbun" class="topbun">
+            <div class="addedIngredients"></div>
+            <img src="img/bottombun.png" alt="bottombun" class="bottombun">
+        </div>
+     <div class="ingredients-list"> 
+        <div class="ingredients-options">
+            <img src="img/cheese.png" alt="cheese" class="ingredient-button" data-ingredient-type="cheese">
+            <img src="img/lettuce.png" alt="lettuce" class="ingredient-button" data-ingredient-type="lettuce">
+            <img src="img/ketchup.png" alt="ketchup" class="ingredient-button" data-ingredient-type="ketchup">
+            <img src="img/tomato.png" alt="tomato" class="ingredient-button" data-ingredient-type="tomato">
+            <img src="img/meat.png" alt="meat" class="ingredient-button" data-ingredient-type="meat">
+        </div>
+        <div class="ingredients-options2">
+            <img src="img/cheese2.png" alt="cheese" class="ingredient-button" data-ingredient-type="cheese">
+            <img src="img/egg.png" alt="egg" class="ingredient-button" data-ingredient-type="egg">
+            <img src="img/mayonaise.png" alt="mayonaise" class="ingredient-button" data-ingredient-type="mayonaise">
+            <img src="img/meat2.png" alt="meat" class="ingredient-button" data-ingredient-type="meat">
+            <img src="img/salami.png" alt="salaim" class="ingredient-button" data-ingredient-type="salami">
+        </div>
+        <div class="ingredients-options3">
+            <img src="img/cucumber.png" alt="cucumber" class="ingredient-button" data-ingredient-type="cucumber">
+            <img src="img/champions.png" alt="champions" class="ingredient-button" data-ingredient-type="champions">
+            <img src="img/pepper.png" alt="pepper" class="ingredient-button" data-ingredient-type="pepper">
+            <img src="img/pickle.png" alt="pickle" class="ingredient-button" data-ingredient-type="pickle">
+        </div>
+    </div>
+</div>
+
+ <h3 class="money">Jij hebt nu €6</h3>
+        <div class="receipt">
+            <h2>Bon</h2>
+            <ul class="receiptcontents"></ul>
+            <p class="costofhamburger">Totaal: €10</p>
+            <button class="checkout-button">Betalen</button>
+        </div>
+    </div>
+
+    <p class="message"></p>
+    <button class="playagainbutton">Terug</button>
+    <script src="script.js"></script>
+</body>
+</html>
