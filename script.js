@@ -1,6 +1,5 @@
 console.log("start script...");
 
-// Variables
 let money = 6;
 let cost = 0;
 const moneyDisplay = document.querySelector("h1");
@@ -14,7 +13,6 @@ const ingredientButtons = document.querySelectorAll(".ingredient-button");
 
 const addedIngredientsMap = new Map(); //https://www.digitalocean.com/community/tutorials/4-uses-of-javascripts-arraymap-you-should-know
 const receiptItemsMap = new Map(); 
-
 
 
 function addIngredient(ingredientSrc, ingredientName) {

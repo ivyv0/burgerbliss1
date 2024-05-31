@@ -33,13 +33,13 @@ h3 {
 }
 
 .burgerbackground img {
-  width: 40%;
-  background-position: center; 
-  background-attachment: fixed; 
-  margin: 0;
-  padding: 2em;
-  text-align: center;
-  justify-content: center;
+    width: 40%;
+    background-position: center; 
+    background-attachment: fixed; 
+    margin: 0;
+    padding: 2em;
+    text-align: center;
+    justify-content: center;
 } 
 
 .container {
@@ -110,7 +110,6 @@ h3 {
     transform: scale(1.1);
 }
 
-
 .ingredients-options {
     display: flex;
     align-items: center; 
@@ -153,7 +152,6 @@ h3 {
 .samenstellen {
     padding: 4em;
 }
-
 
 .playagainbutton {
     margin-left: 3em;
