@@ -1,91 +1,79 @@
 console.log("start script...");
 
-let money = 6;
-let cost = 0;
-const moneyDisplay = document.querySelector("h1");
-const message = document.querySelector(".message");
-const costOfHamburger = document.querySelector(".costofhamburger");
-const ingredientContainer = document.querySelector(".addedIngredients");
-const playAgainButton = document.querySelector(".playagainbutton");
-const receiptContents = document.querySelector(".receiptcontents");
-const payButton = document.querySelector(".checkout-button");
-const ingredientButtons = document.querySelectorAll(".ingredient-button");
+let totalCost = 0;
+let money = 6; 
+document.addEventListener("DOMContentLoaded", function () {
+    const ingredientButtons = document.querySelectorAll(".ingredient-button");
+    const addedIngredientsDiv = document.querySelector(".addedIngredients");
+    const receiptContents = document.querySelector(".receiptcontents");
+    const costDisplay = document.querySelector(".costofhamburger");
+    const checkoutButton = document.querySelector(".checkout-button");
+    const message = document.querySelector(".message");
+    const ingredientPrices = {
+        cheese: 1, lettuce: 0.5, ketchup: 0.5, tomato: 0.5, meat: 4,
+        egg: 1, mayonaise: 0.5, salami: 1, cucumber: 0.5,
+        champions: 1, pepper: 0.5, pickle: 0.5
+    };
+    
+function toggleIngredient(ingredientType) {
+     const existingIngredient = addedIngredientsDiv.querySelector(`img[data-ingredient="${ingredientType}"]`);
+        if (existingIngredient) {
+            existingIngredient.remove();
 
-const addedIngredientsMap = new Map(); //https://www.digitalocean.com/community/tutorials/4-uses-of-javascripts-arraymap-you-should-know
-const receiptItemsMap = new Map(); 
+//https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/toggle
 
+    const receiptItem = receiptContents.querySelector(`li[data-ingredient="${ingredientType}"]`);
+        if (receiptItem) {
+                receiptItem.remove();
+            }
 
-function addIngredient(ingredientSrc, ingredientName) {
-    if (!addedIngredientsMap.has(ingredientName) && money >= 2) {
-        const addedIngredient = document.createElement("img");
-        addedIngredient.src = ingredientSrc;
-        ingredientContainer.appendChild(addedIngredient);
-        addedIngredientsMap.set(ingredientName, addedIngredient);
-        cost += 2;
-        costOfHamburger.textContent = "Totale kost " + " €" + cost;
-        console.log(ingredientName + " added.");
-        addToReceipt(ingredientName);
-    } else if (addedIngredientsMap.has(ingredientName)) {
-        const addedIngredient = addedIngredientsMap.get(ingredientName);
-        ingredientContainer.removeChild(addedIngredient);
-        addedIngredientsMap.delete(ingredientName);
-        cost -= 2;
-        costOfHamburger.textContent = "Totale kost " + "€" + cost;
-        console.log(ingredientName + " removed.");
-        removeFromReceipt(ingredientName);
+        totalCost -= ingredientPrices[ingredientType];
+        costDisplay.textContent = `Totaal: €${totalCost}`;
+
+        } else {
+            if (totalCost + ingredientPrices[ingredientType] <= money) {
+                const ingredientImg = document.createElement("img");
+                ingredientImg.src = `img/${ingredientType}.png`;
+                ingredientImg.alt = ingredientType;
+                ingredientImg.setAttribute("data-ingredient", ingredientType);
+              
+
+                const listItem = document.createElement("li");
+                listItem.textContent = `${ingredientType} - €${ingredientPrices[ingredientType]}`;
+                listItem.setAttribute("data-ingredient", ingredientType);
+                receiptContents.appendChild(listItem);
+
+                totalCost += ingredientPrices[ingredientType];
+                costDisplay.textContent = `Totaal: €${totalCost}`;
+            } else {
+                message.textContent = "Jij hebt geen genoeg geld om dit item toe te voegen.";
+                message.style.color = "red";
+                setTimeout(() => {
+                    message.textContent = "";
+                }, 2000);
+            }
+        }
     }
-}
 
-function addIngredientHandler(event) {
-    const ingredientType = event.target.dataset.ingredientType; //https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
-    const ingredientSrc = `img/${ingredientType}.png`;
+    ingredientButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const ingredientType = button.getAttribute("data-ingredient-type");
+            toggleIngredient(ingredientType);
+        });
+    });
 
-    addIngredient(ingredientSrc, ingredientType);
-}
+    checkoutButton.addEventListener("click", function () {
+        if (totalCost <= money) {
+            message.textContent = `Jij hebt betaald. Bedankt voor je aankoop!`;
+            totalCost = 0;
+            costDisplay.textContent = `Totaal: €${totalCost}`;
+        }
+    });
 
-// voegt een ingredient toe aan de bon
-function addToReceipt(ingredientName) {
-    const addedToReceipt = document.createElement("li");
-    addedToReceipt.textContent = ingredientName;
-    receiptContents.appendChild(addedToReceipt);
-    receiptItemsMap.set(ingredientName, addedToReceipt);
-    console.log("added " + ingredientName + " to receipt");
-}
+});
+    const playAgainButton = document.querySelector('.playagainbutton');
+    playAgainButton.addEventListener('click', function () {
+        location.reload();
+    });
 
-// verwijdert een ingredient van de bon
-function removeFromReceipt(ingredientName) {
-    const addedToReceipt = receiptItemsMap.get(ingredientName);
-    if (addedToReceipt) {
-        receiptContents.removeChild(addedToReceipt);
-        receiptItemsMap.delete(ingredientName);
-    }
-    console.log("removed " + ingredientName + " from receipt");
-}
 
-//melding als er niet genoeg geld is
-function payBill() {
-    if (money >= cost) {
-        playAgainButton.style.visibility = "visible";
-        money -= cost;
-        moneyDisplay.textContent = "Jij hebt nu " + "€" + money;
-        costOfHamburger.textContent = "Jij hebt betaald.";
-        payButton.remove();
-        ingredientButtons.forEach(button => button.removeEventListener('click', addIngredientHandler));
-        message.textContent = "Geniet van je hamburger!";
-    } else {
-        message.textContent = "Jij hebt geen genoeg geld.";
-        message.style.color = "red";
-        setTimeout(() => {
-            message.textContent = "";
-        }, 1000);
-    }
-}
-
-// herstart de pagina
-function playAgain() {
-    location.reload();
-}
-
-playAgainButton.addEventListener('click', playAgain);
-ingredientButtons.forEach(button => button.addEventListener('click', addIngredientHandler));
-payButton.addEventListener('click', payBill);       
