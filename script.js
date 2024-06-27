@@ -69,6 +69,7 @@ function toggleIngredient(ingredientType) {
             costDisplay.textContent = `Totaal: €${totalCost}`;
         }
     });
+    //https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
 
 });
     const playAgainButton = document.querySelector('.playagainbutton');
