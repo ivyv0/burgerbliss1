@@ -20,7 +20,7 @@ function toggleIngredient(ingredientType) {
         if (existingIngredient) {
             existingIngredient.remove();
 
-//https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/toggle
+//https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/toggle//
 
     const receiptItem = receiptContents.querySelector(`li[data-ingredient="${ingredientType}"]`);
         if (receiptItem) {
@@ -36,6 +36,7 @@ function toggleIngredient(ingredientType) {
                 ingredientImg.src = `img/${ingredientType}.png`;
                 ingredientImg.alt = ingredientType;
                 ingredientImg.setAttribute("data-ingredient", ingredientType);
+                addedIngredientsDiv.appendChild(ingredientImg);
               
 
                 const listItem = document.createElement("li");
@@ -69,7 +70,7 @@ function toggleIngredient(ingredientType) {
             costDisplay.textContent = `Totaal: €${totalCost}`;
         }
     });
-    //https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+    //https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener//
 
 });
     const playAgainButton = document.querySelector('.playagainbutton');
