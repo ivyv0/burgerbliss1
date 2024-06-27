@@ -47,7 +47,7 @@ function toggleIngredient(ingredientType) {
                 totalCost += ingredientPrices[ingredientType];
                 costDisplay.textContent = `Totaal: €${totalCost}`;
             } else {
-                message.textContent = "Jij hebt geen genoeg geld om dit item toe te voegen.";
+                message.textContent = "Je hebt geen genoeg geld om dit item toe te voegen.";
                 message.style.color = "red";
                 setTimeout(() => {
                     message.textContent = "";
@@ -65,7 +65,7 @@ function toggleIngredient(ingredientType) {
 
     checkoutButton.addEventListener("click", function () {
         if (totalCost <= money) {
-            message.textContent = `Jij hebt betaald. Bedankt voor je aankoop!`;
+            message.textContent = `Je hebt betaald. Bedankt voor je aankoop!`;
             totalCost = 0;
             costDisplay.textContent = `Totaal: €${totalCost}`;
         }
